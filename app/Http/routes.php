@@ -14,11 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*-- grupo ruta para administracion
+*** todas rutas dentro del grupo van dentro de admin (prefix)
+*/
+Route::group(['prefix' => 'admin'], function () {
 
-Route::group(['prefix' => 'articles'], function () {
-
-    Route::get('view/{id}', [
-      'uses' => 'TestController@view',
-      'as'   => 'articlesView'
-    ]);
+    Route::resource('users','UsersController');/* 2 param es el controlador   */
 });
