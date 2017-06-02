@@ -163,6 +163,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //sluggable
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        //flash
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
