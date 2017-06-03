@@ -8,9 +8,9 @@
   <body>
     @include('admin.template.partials.nav')
     <section>
-
+      
       @yield('content')
-      @include('flash::message')
+
     </section>
     <script src="{{ asset('plugins/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>

@@ -32,7 +32,7 @@
                 <span class="label label-info">{{ $user->type }}</span>
               @endif
             </td>
-            <td><a href="" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <td><a href="{{ route('admin.users.edit', $user->id ) }}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
           <a href="{{ route('admin.users.destroy', $user->id ) }}" onclick="return confirm('Seguro quieres eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
           </tr>
         @endforeach
