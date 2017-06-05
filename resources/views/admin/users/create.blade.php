@@ -2,11 +2,24 @@
 @extends('admin.template.main')
 
 @section('content')
+
+
   <div class="col-md-8 col-md-offset-2">
   <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Agregar Usuarios</h3>
-  </div>
+  </div><br>
+<!-- errores -->
+  @if (count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.users.store', 'method' => 'POST']) !!}
 

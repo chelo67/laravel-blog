@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\User;
+use App\Http\Requests\CategoryRequest;
+use App\Category;
 use Laracast\Flash\Flash;
-use App\Http\Requests\UserRequest;
 
-
-class UsersController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id','ASC')->paginate(3);
-        return view('admin.users.index')->with('users', $users);#with pasa variable a vista
+        return view('admin.categories.index');
     }
 
     /**
@@ -29,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -38,12 +36,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(CategoryRequest $request)
     {
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-        flash('se ha registrado ' . $user->name . ' con exito')->success();
+        $category = new Category($request->all());
+        $category->save();
+
+        flash('La categoria:' . $category->name . ' ha sido creada con exito')->success();
         return redirect()->route('admin.categories.index');
     }
 
@@ -55,7 +53,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        dd('Hola soy una show');
+        //
     }
 
     /**
@@ -66,8 +64,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('admin.users.edit')->with('user' , $user);
+        //
     }
 
     /**
@@ -79,14 +76,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->type = $request->type;
-        $user->save();
-
-        flash('El usuario ' . $user->name . ' Ha sido modificado con exito')->warning();
-        return redirect()->route('admin.users.index');
+        //
     }
 
     /**
@@ -97,11 +87,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user =User::find($id);
-        $user->delete();
-
-        flash('El usuario ' . $user->name . ' Ha sido borrado con exito')->error();
-        return redirect()->route('admin.users.index');
-
+        //
     }
 }
