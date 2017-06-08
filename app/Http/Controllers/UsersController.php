@@ -18,6 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
+        # ver tabla categoria
         $users = User::orderBy('id','ASC')->paginate(3);
         return view('admin.users.index')->with('users', $users);#with pasa variable a vista
     }
@@ -29,6 +30,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        # formulario agrgar nueva usuario
         return view('admin.users.create');
     }
 
@@ -40,6 +42,7 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
+        # guarda nueva usuario
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
@@ -66,6 +69,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        #  ver formulario edicion usuario
         $user = User::find($id);
         return view('admin.users.edit')->with('user' , $user);
     }
@@ -79,6 +83,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        #actualiza usuario
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -97,6 +102,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        # elimina usuario
         $user =User::find($id);
         $user->delete();
 

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 /*-- grupo ruta para administracion
 *** todas rutas dentro del grupo van dentro de admin (prefix)
@@ -27,4 +27,12 @@ Route::get('users/{id}/destroy', [
  ]);
 
  Route::resource('categories','CategoriesController');
+ Route::get('categories/{id}/destroy', [
+    'uses' => 'CategoriesController@destroy' ,
+    'as' => 'admin.categories.destroy'
+  ]);
 });
+
+Route::auth();
+
+Route::get('/', 'HomeController@index');
