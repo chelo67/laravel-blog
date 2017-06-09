@@ -26,11 +26,19 @@ Route::get('users/{id}/destroy', [
    'as' => 'admin.users.destroy'
  ]);
 
+//categorias
  Route::resource('categories','CategoriesController');
  Route::get('categories/{id}/destroy', [
     'uses' => 'CategoriesController@destroy' ,
     'as' => 'admin.categories.destroy'
   ]);
+
+  //Tags
+  Route::resource('tags', 'TagsController');
+  Route::get('tags/{id}/destroy', [
+     'uses' => 'TagsController@destroy' ,
+     'as' => 'admin.tags.destroy'
+   ]);
 });
 
 Route::auth();
