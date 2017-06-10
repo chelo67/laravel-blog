@@ -10,7 +10,20 @@
   <div class="panel-body">
   @include('flash::message')
   <a href="{{ route('admin.tags.create') }}" class="btn btn-info">Registrar nuevo Tag</a>
+
+  <!-- buscador -->
+  {!! Form::open(['route' => 'admin.tags.index' , 'method' => 'GET' , 'class' => 'navbar-form pull-right']) !!}﻿
+
+  <div class="input-group">
+    {!! Form::text('name', null ,['class' => 'form-control','placeholder' => 'buscar tag...' , 'aria-describedby' =>'search']) !!}
+    <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+  </div>
+
+  {!! Form::close()!!}
+    <!--fin  buscador -->
+
   <hr>
+
   <table class="table table-striped">
   <thead>
       <th>Id</th>
