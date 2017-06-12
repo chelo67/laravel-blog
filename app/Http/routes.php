@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth/login');
 });
+
 /*-- grupo ruta para administracion
 *** todas rutas dentro del grupo van dentro de admin (prefix)
 */
@@ -39,6 +40,9 @@ Route::get('users/{id}/destroy', [
      'uses' => 'TagsController@destroy' ,
      'as' => 'admin.tags.destroy'
    ]);
+
+   //articles
+   Route::resource('articles', 'ArticlesController');
 });
 
 Route::auth();
