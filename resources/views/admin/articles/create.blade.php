@@ -35,17 +35,17 @@
 
       <div class="form-group">
         {!! Form::label('content','Contenido') !!}
-        {!! Form::textarea('content' , null , ['class' => 'form-control' , 'placeholder' => 'contenido' , 'required']) !!}
+        {!! Form::textarea('content' , null , ['class' => 'form-control textarea-content' , 'placeholder' => 'contenido' , 'required']) !!}
       </div>
 
       <div class="form-group">
         {!! Form::label('tags','Tags') !!}
-        {!! Form::select('tags' , $tags , null , ['class' => 'form-control' , 'multiple' , 'required']) !!}
+        {!! Form::select('tags[]' , $tags , null , ['class' => 'form-control select-tag' , 'multiple' , 'required']) !!}
       </div>
 
       <div class="form-group">
         {!! Form::label('images','Imagen') !!}
-        {!! Form::file('images') !!}
+        {!! Form::file('image') !!}
       </div>
 
       <div class="form-group">
@@ -58,4 +58,22 @@
     </div>
     </div>
     </div>
+@endsection
+
+@section('js')
+
+<script>
+    $('.textarea-content') .trumbowyg();
+</script>
+
+  <script>
+      $('.select-tag') .chosen ({
+        placeholder_text_multiple : 'Seleccione un maximo de 3 Tags' ,
+        max_selected_options : 3 ,
+        search_contains : true
+      });
+  </script>
+
+  
+  
 @endsection
