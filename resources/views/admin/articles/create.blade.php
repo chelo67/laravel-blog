@@ -25,7 +25,7 @@
 
       <div class="form-group">
         {!! Form::label('title','Titulo') !!}
-        {!! Form::text('titles',null,['class' => 'form-control','placeholder' => 'Titulo' , 'required']) !!}
+        {!! Form::text('title',null,['class' => 'form-control','placeholder' => 'Titulo' , 'required']) !!}
       </div>
 
       <div class="form-group">
